@@ -1,3 +1,14 @@
+
+
+const Discord = require('discord.js');
+const client = new Discord.Client(); 
+const fs = require("fs"); 
+const moment = require("moment");
+
+client.on('ready', () => {
+	console.log('I am ready!'); 
+  });
+   
 client.on("message", (message) => {
 if (message.content.startsWith("make")) {
             if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
@@ -15,21 +26,12 @@ if (message.content.startsWith("make")) {
     message.guild.createChannel('Relax', 'voice');
     message.guild.createChannel('Sweet', 'voice');
     message.guild.createChannel('Events', 'voice');
-    message.guild.createChannel('Music', 'category'); 
+    message.guild.createCategory('Music','category'); 
+	 message.guild.createChannel('Music', 'voice');
     message.channel.sendMessage('تـم إنـشاء الرومات')
 }
-});
+}); 
 
-const Discord = require('discord.js');
-const client = new Discord.Client(); 
-const fs = require("fs"); 
-const moment = require("moment");
-
-client.on('ready', () => {
-	console.log('I am ready!'); 
-  });
-   
- 
 client.on('message', function(message) {
                   if(!message.channel.guild) return;
     if(message.content ===  '-color 100') {
