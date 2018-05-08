@@ -24,8 +24,8 @@ if (message.content.startsWith("make")) {
     message.guild.createChannel('Relax', 'voice');
     message.guild.createChannel('Sweet', 'voice');
     message.guild.createChannel('Events', 'voice');
-    message.guild.createCategory('Music','category'); 
-	 message.guild.createChannel('Music', 'voice');
+    message.guild.createChannel('Music','category'); 
+    message.guild.createChannel('Music', 'voice');
     message.channel.sendMessage('تـم إنـشاء الرومات')
 }
 }); 
