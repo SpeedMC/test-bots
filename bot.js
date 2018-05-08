@@ -37,7 +37,7 @@ Client.on("message", async message => {
     };
   }
   let prefix = prefixes[message.guild.id].prefixes;
-}
+
 
 //setprefix.js (command)
 
