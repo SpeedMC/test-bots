@@ -29,37 +29,33 @@ if (message.content.startsWith("make")) {
 }
 }); 
 
-Client.on("message", async message => {
-  let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
-  if(!prefixes[message.guild.id]){
+module.exports.run = async (client, message, args, prefix) => {
+
+    if (!message.member.hasPermission("MANAGE_SERVER")) return message.reply("No no no.");
+    if (!args[0] || args[0 == "help"]) return message.reply(`Usage: !prefix <desired prefix here>"`);
+
+    let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+
     prefixes[message.guild.id] = {
-      prefixes: auth.prefix
+        prefixes: args[0]
     };
-  }
-  let prefix = prefixes[message.guild.id].prefixes;
 
+    fs.writeFile("./prefixes.json", JSON.stringify(prefixes), (err) => {
+        if (err) console.log(err)
+    });
 
-//setprefix.js (command)
+    let sEmbed = new Discord.RichEmbed()
+        .setColor("#4286f4")
+        .setTitle("Prefix Set!")
+        .setDescription(`Set to ${args[0]}`);
 
-  if(!message.member.hasPermission("MANAGE_SERVER")) return message.reply("You haven't enough permissions.");
-  if(!args[0] || args[0 == "help"]) return message.reply(`Usage: ${prefix}setprefix <new prefix>`);
+    message.channel.send(sEmbed);
 
-  let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+}
 
-  prefixes[message.guild.id] = {
-    prefixes: args[0]
-  };
-
-  fs.writeFile("./prefixes.json", JSON.stringify(prefixes), (err) => {
-    if (err) console.log(err)
-  });
-
-  let sEmbed = new Discord.RichEmbed()
-  .setColor("#FF9900")
-  .setTitle("Prefix Set!")
-  .setDescription(`Set to ${args[0]}`);
-
-  message.channel.send(sEmbed);
+module.exports.help = {
+    name: "prefix"
+}
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
