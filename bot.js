@@ -24,11 +24,42 @@ if (message.content.startsWith("make")) {
     message.guild.createChannel('Relax', 'voice');
     message.guild.createChannel('Sweet', 'voice');
     message.guild.createChannel('Events', 'voice');
-    message.guild.createChannel('Music','category','Music','text'),
-	    message.guild.createChannel('Music','voice'); 
     message.guild.createChannel('Music', 'voice');
     message.channel.sendMessage('تـم إنـشاء الرومات')
 }
 }); 
+
+Client.on("message", async message => {
+  let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+  if(!prefixes[message.guild.id]){
+    prefixes[message.guild.id] = {
+      prefixes: auth.prefix
+    };
+  }
+  let prefix = prefixes[message.guild.id].prefixes;
+}
+
+//setprefix.js (command)
+
+  if(!message.member.hasPermission("MANAGE_SERVER")) return message.reply("You haven't enough permissions.");
+  if(!args[0] || args[0 == "help"]) return message.reply(`Usage: ${prefix}setprefix <new prefix>`);
+
+  let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+
+  prefixes[message.guild.id] = {
+    prefixes: args[0]
+  };
+
+  fs.writeFile("./prefixes.json", JSON.stringify(prefixes), (err) => {
+    if (err) console.log(err)
+  });
+
+  let sEmbed = new Discord.RichEmbed()
+  .setColor("#FF9900")
+  .setTitle("Prefix Set!")
+  .setDescription(`Set to ${args[0]}`);
+
+  message.channel.send(sEmbed);
+
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
