@@ -1,12 +1,50 @@
 const Discord = require('discord.js');
-const client = new Discord.Client(); 
-const fs = require("fs");   
+const client = new Discord.Client();    
 const prefix = "-";
-const moment = require("moment");
+
 
 client.on('ready', () => {
 	console.log('I am ready!'); 
   });
+
+client.on('message', message => {
+    if(message.content === prefix + 'createcolors') {
+                         if(!message.channel.guild) return message.channel.send('**This Commnad only For Servers !**'); 
+         if(!message.member.hasPermission('ADMINISTRATOR')) return    message.channel.send('**You Dont Have** `ADMINISTRATOR` **premission**').then(msg => msg.delete(6000))
+      message.guild.createRole({
+                  name: "red",
+                    color: "#ff0000",
+                    permissions: []
+     })
+           message.guild.createRole({
+                  name: "blue",
+                    color: "#000bd2",
+                    permissions: []
+     })
+                message.guild.createRole({
+                  name: "yellow",
+                    color: "#f8e406",
+                    permissions: []
+     })
+                     message.guild.createRole({
+                  name: "black",
+                    color: "#080202",
+                    permissions: []
+     })
+                     message.guild.createRole({
+                  name: "purple",
+                    color: "#be00ef",
+                    permissions: []
+     })
+	                  message.guild.createRole({
+                  name: "green",
+                    color: "#29d43d",
+                    permissions: []
+     })
+	  message.channel.sendMessage({embed: new Discord.RichEmbed()
+     .setColor('#502faf').setAuthor(`${message.author.username}'`, message.author.avatarURL).setDescription('``Colors Has Been Created``')});
+    }
+	});
 
 client.on('message', message => {                      
 if(!message.channel.guild) return;
