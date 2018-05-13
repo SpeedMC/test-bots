@@ -15,7 +15,7 @@ if(!message.channel.guild) return;
    message.channel.sendFile(`https://cdn.discordapp.com/attachments/435763332461625354/438321483643879424/5561996-nature-background-images.png`).then(msg => {
    msg.react('❤')
    .then(() => msg.react('💚'))
-   .then(() => msg.react('💜'))
+   .then(() => msg.react('💜')) 
    .then(() => msg.react('💛'))
    .then(() => msg.react('🖤'))
    .then(() => msg.react('💙'))
