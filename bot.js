@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client(); 
 const fs = require("fs");   
+const prefix = "-";
 const moment = require("moment");
 
 client.on('ready', () => {
@@ -8,7 +9,7 @@ client.on('ready', () => {
   });
 
 client.on("message", (message) => {
-if (message.content.startsWith("make")) {
+if (message.content.startsWith(prefix+"make")) {
             if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
         let args = message.content.split(" ").slice(1);
     message.guild.createChannel('rules', 'text');
