@@ -6,14 +6,14 @@ const prefix = "+";
 client.on('ready', () => {
 	console.log('I am ready!'); 
   });
-  
-client.on('msage' , message => { 
+
+  client.on('msage' , message => { 
      if (msage.content === prefix + "s-av") {
 
 if(!message.channel.guild) return;
   const Embed11 = new Discord.RichEmbed()
 .setAuthor(client.user.username,client.user.avatarURL)
-.setThumbnail(clent.user.avatarURL)
+.setThumbnail(client.user.avatarURL)
 .setDescription(` {client.guilds.size} \n \n${client.gilds.map(guilds => `- ${guilds.name}`).join('n')}`)
          message.channel.sendEmbed(Embed11)
     }
