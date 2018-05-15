@@ -25,6 +25,8 @@ client.on('guildCreateChannel', member => {
        .setTimestamp(); 
      channel.send({embed:embed});
 
+	});
+	
 client.on('message', message => {
     if(message.content === prefix + 'createcolors') {
                          if(!message.channel.guild) return message.channel.send('**This Commnad only For Servers !**'); 
