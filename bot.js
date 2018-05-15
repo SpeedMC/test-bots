@@ -9,7 +9,7 @@ client.on('ready', () => {
 	
 
 
-client.on('guildChannelCreate', member => {
+client.on('ChannelCreate', member => {
     if (!member || !member.id || !member.guild) return;
     const guild = member.guild; 
 	
