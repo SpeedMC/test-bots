@@ -11,7 +11,6 @@ client.on('ready', () => {
      if (message.content === prefix + "s-av") {
 
 if(!message.channel.guild) return;
-  if(messae.content < 1023) return
   const Embed11 = new Discord.RichEmbed()
 .setAuthor(client.user.username,client.user.avatarURL)
 .setThumbnail(client.user.avatarURL)
