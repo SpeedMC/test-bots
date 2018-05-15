@@ -6,7 +6,7 @@ const prefix = "+";
 client.on('ready', () => {
 	console.log('I am ready!'); 
   });
-
+  
 client.on('msage' , message => { 
      if (msage.content === prefix + "s-av") {
 
