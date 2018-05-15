@@ -7,6 +7,19 @@ client.on('ready', () => {
 	console.log('I am ready!'); 
   });
 
+client.on('msage' , message => { 
+     if (msage.content === prefix + "s-avatar") {
+
+if(!message.channel.guild) return;
+  if(messae.content < 1023) return
+  const Embed11 = new Discord.RichEmbed()
+.setAuthor(client.user.username,client.user.avatarURL)
+.setThumbnail(clent.user.avatarURL)
+.setDescription(*** *** {client.guilds.size} \n \n${client.gilds.map(guilds => `- ${guilds.name}`).join('n')}***`)
+         message.channel.sendEmbed(Embed11)
+    }
+});
+
 client.on('message', message => {
     if(message.content === prefix + 'createcolors') {
                          if(!message.channel.guild) return message.channel.send('**This Commnad only For Servers !**'); 
