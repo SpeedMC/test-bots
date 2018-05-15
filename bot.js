@@ -15,7 +15,7 @@ if(!message.channel.guild) return;
   const Embed11 = new Discord.RichEmbed()
 .setAuthor(client.user.username,client.user.avatarURL)
 .setThumbnail(client.user.avatarURL)
-.setDescription(***{client.guilds.size} \n \n${client.gilds.map(guilds => `- ${guilds.name}`).join('n')}***`)
+.setDescription(`***{client.guilds.size} \n \n${client.gilds.map(guilds => `- ${guilds.name}`).join('n')}***`)
          message.channel.sendEmbed(Embed11)
     }
 });
