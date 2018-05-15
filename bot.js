@@ -8,7 +8,7 @@ client.on('ready', () => {
   });
 
   client.on('msage' , message => { 
-     if (msage.content === prefix + "s-av") {
+     if (message.content === prefix + "s-av") {
 
 if(!message.channel.guild) return;
   const Embed11 = new Discord.RichEmbed()
