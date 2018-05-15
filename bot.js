@@ -8,6 +8,19 @@ client.on('ready', () => {
   });
 	
 
+client.on('message', msg => {
+	var prefix = "-";
+if (msg.content == prefix + "AV") {
+ let message =msg;
+if(!message.channel.guild) return;
+  if(message.content < 1023) return
+  const Embed11 = new Discord.RichEmbed()
+.setAuthor(client.user.username,client.user.avatarURL)
+.setThumbnail(client.user.avatarURL)
+    .setDescription(`${client.guilds.size} \n\   ${client.guilds.map(g => g.name).join("\n")}`)
+         message.channel.sendEmbed(Embed11)
+    }
+});
 
 client.on('message', message => {
     if(message.content === prefix + 'createcolors') {
