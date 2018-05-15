@@ -7,7 +7,7 @@ client.on('ready', () => {
 	console.log('I am ready!');   
   });
 
-client.on('guildEmojiEdit', member => {
+client.on('guildCreateChannel', member => {
     if (!member || !member.id || !member.guild) return;
     const guild = member.guild; 
 	
