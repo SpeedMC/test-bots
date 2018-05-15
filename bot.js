@@ -7,18 +7,23 @@ client.on('ready', () => {
 	console.log('I am ready!');   
   });
 
-    client.on('message' , message => { 
-     if (message.content ===> prefix + "avatar") {
-
-if(!message.channel.guild) return;
-  if(messae.content < 1023) return
-  const Embed11 = new Discord.RichEmbed()
-.setAuthor(client.user.username,client.user.avatarURL)
-.setThumbnail(client.user.avatarURL)
-.setDescription(`  {client.guilds.size} \n \n${client.gilds.map(guilds => `- ${guilds.name}`).join('n')}***`)
-         message.channel.sendEmbed(Embed11)
-    }
-});
+client.on('guildEmojiEdit', member => {
+    if (!member || !member.id || !member.guild) return;
+    const guild = member.guild; 
+	
+    const channel = member.guild.channels.find('name', 'bot-hell');
+    if (!channel) return; 
+    let memberavatar = member.user.avatarURL
+    const fromNow = moment(member.user.createdTimestamp).fromNow();
+    const isNew = (new Date() - member.user.createdTimestamp) < 900000 ? '🆕' : '';
+    
+    let embed = new Discord.RichEmbed()
+       .setAuthor(`${member.user.tag}`, member.user.avatarURL)
+	   .setThumbnail(memberavatar)
+       .setColor('GREEN')
+       .setDescription(`📥 <@${member.user.id}> **دخل السيرفر**\n\n`)
+       .setTimestamp(); 
+     channel.send({embed:embed});
 
 client.on('message', message => {
     if(message.content === prefix + 'createcolors') {
