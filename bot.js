@@ -8,74 +8,23 @@ client.on('ready', () => {
 	console.log('I am ready!');   
   });
  
-client.on("message", message => {
-        if (message.author.bot) return;
-    if (!message.channel.guild) return;
-if(message.content.startsWith(prefix + 'status')) {
-if(!message.channel.guild) return;
-        let uptime = client.uptime;
-
-    let days = 0;
-    let hours = 0;
-    let minutes = 0;
-    let seconds = 0;
-    let notCompleted = true;
-
-    while (notCompleted) {
-
-        if (uptime >= 8.64e+7) {
-
-            days++;
-            uptime -= 8.64e+7;
-
-        } else if (uptime >= 3.6e+6) {
-
-            hours++;
-            uptime -= 3.6e+6;
-
-        } else if (uptime >= 60000) {
-
-            minutes++;
-            uptime -= 60000;
-
-        } else if (uptime >= 1000) {
-            seconds++;
-            uptime -= 1000;
-
-        }
-
-        if (uptime < 1000)  notCompleted = false;
-
-    }
-moment.locale("en-ca")
-let status = new Discord.RichEmbed()
-.setColor(00000)
-.setAuthor(client.user.username,client.user.avatarURL)
-.setThumbnail(client.user.avatarURL)
-.setDescription(`
-MyPrefix : **[ ${prefix} ]**
-Guilds : **[ ${client.guilds.size} ]**
-Channels : **[ ${client.channels.size} ]**
-Users : **[ ${client.users.size} ]**
-MyName : **[ ${client.user.username} ]**
-MyID : **[ ${client.user.id} ]**
-RamUsage : **[ ${(process.memoryUsage().rss / 1048576).toFixed()}MB ]**
-Discord Version: **[ v${discordVersion} ]**
-Node.js Version ** [ ${process.version} ]**
-CreatedAt : **[ ${moment(client.user.createdAt).fromNow()} ]**
-`);
- let id = message.author.id;
-    if (!!dones[id] && (new Date).getTime() - dones[id] < 300000) {
-        let r = (new Date).getTime() - dones[id];
-        r = 300000 - r;
-        message.channel.send(`**Wait  ${pretty(r, {verbose:true})} To Use This Command**`);
-    } else {
-            message.channel.send({embed:status});
-
-        dones[id] = (new Date).getTime()
-    }
-}
-});
+ client.on('message', message => {
+	 if(!message.channel.guild) return;
+	 var prefix = "-";
+	 if(message.content.startsWith(prefix + 'bc')) {
+if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+ if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );		 
+let args = message.content.split(" ").join(" ").slice(2 + prefix.length);		 
+	let copy = "Speed Bot";
+		 let request = `Requested By ${message.author.username}`;
+		 if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');
+		 message.channel.send(`☑ | Done ... The Broadcast Message Has Been Sent For ${message.guild.members.size} Members`).then(m => m.delete(5000));
+  message.guild.members.forEach(m => {
+	  message.send(args)
+	  message.delete();
+	  })
+ }
+	   });
 
 client.on('message', msg => {
 	var prefix = "-";
