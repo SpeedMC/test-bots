@@ -8,7 +8,7 @@ client.on('ready', () => {
   });
 
 client.on('msage' , message => { 
-     if (msage.content === prefix + "s-avatar") {
+     if (msage.content === prefix + "s-av") {
 
 if(!message.channel.guild) return; 
   if(messae.content < 1023) return
