@@ -7,14 +7,15 @@ client.on('ready', () => {
 	console.log('I am ready!');   
   });
 
-  client.on('msage' , message => { 
-     if (message.content === prefix + "s-av") {
+   client.on('message' , message => { 
+     if (message.content ===> prefix + "s-av") {
 
 if(!message.channel.guild) return;
+  if(messae.content < 1023) return
   const Embed11 = new Discord.RichEmbed()
 .setAuthor(client.user.username,client.user.avatarURL)
 .setThumbnail(client.user.avatarURL)
-.setDescription(` {client.guilds.size} \n \n${client.gilds.map(guilds => `- ${guilds.name}`).join('n')}`)
+.setDescription(*** *** {client.guilds.size} \n \n${client.gilds.map(guilds => `- ${guilds.name}`).join('n')}***`)
          message.channel.sendEmbed(Embed11)
     }
 });
