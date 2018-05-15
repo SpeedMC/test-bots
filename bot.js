@@ -16,7 +16,7 @@ if(!message.channel.guild) return message.channel.send('**هذا الأمر فق
 let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
 		 let request = `Requested By ${message.author.username}`;
 		 if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');
-		 message.channel.send(`☑ | تم ارسال الرسالة `).then(m => m.delete(5000));
+		 message.channel.send(` تم ارسال الرسالة `).then(m => m.delete(5000));
   message.guild.members.forEach(m => {
 	  message.author.send(args)
 	  message.delete();
